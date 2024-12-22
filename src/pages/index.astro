@@ -15,21 +15,15 @@ const blogPosts = await getCollection("blog");
             <div class="mb-4 w-full flex flex-col items-start gap-4 leading-6">
                     <img class="w-20 h-20 rounded-full row-reverse" src="avi.jpeg" alt="énio" />
                     <p class="">
-                    Hello, my name is <span class="text-gray-300"> Énio Carlos </span>
-                    and I am a <span class="text-gray-300">Software Engineer @ Corp.</span>
+                    Hello! My name is <span class="text-gray-300"> Énio Carlos </span>
+                    and I am a <span class="text-gray-300">Photographer.</span>
                     <br />
                   
-                    I have accumulated almost <span class="text-gray-300">10 years</span> 
-                    of experience in the field working with companies like: 
-                    <span class="text-gray-300">Google</span>, <span class="text-gray-300">Microsoft</span> 
-                    and <span class="text-gray-300">Amazon</span>.
+                    I am also a <span class="text-gray-300">Software Engineer</span> 
+                    and yes, I built this website to share some of my work in hight quality because Instragram won't stop compressing my photos and make them look like a mess.
                 </p>
                 <p>
-                    I love <span class="text-gray-300">teaching</span> and I as much
-                    as I can I contribute to <span class="text-gray-300"
-                        >OpenSource</span
-                    > projects, <span class="text-gray-300">streaming</span> every
-                    friday on twitch!
+                    If you like what you see here you can always book a shoot, but for now just enjoy the collections below ↓
                 </p>
             </div>
             
@@ -50,13 +44,14 @@ const blogPosts = await getCollection("blog");
                 </di>
             </div>
             <div class="w-full posts flex flex-col gap-1.5">
-                <h2 class="text-base text-gray-200">Posts</h2>
-                <ul class="flex flex-col items-center text-sm">
+                <h2 class="text-base text-gray-200">Collections</h2>
+                <ul class="flex flex-col items-center text-sm gap-20 mt-4">
                     {
                         blogPosts.map((blogPost) => (
                             <BlogPost
                                 slug={blogPost.slug}
                                 title={blogPost.data.title}
+                                image={blogPost.data.image}
                                 publishedDate={blogPost.data.publishedDate}
                             />
                         ))

@@ -1,0 +1,20 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from 'astro:assets';
+
+interface Props {
+   imagePath: string;
+   altText: string;
+   name: string;
+   age: number;
+}
+
+// TODO: pass path as glob parameter
+const { path } = Astro.props;
+const album = await Astro.glob("/src/assets/albums/old-money/*.{jpeg,jpg,png,gif}");
+---
+<div class="card">
+    {album.map((image, _) => 
+     <Image src={image.default} alt="" />
+    )}
+</div>
