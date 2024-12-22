@@ -1,0 +1,68 @@
+---
+import { getCollection } from "astro:content";
+import MainLayout from "../layouts/MainLayout.astro";
+import Social from "../components/Social.astro"
+import BlogPost from "../components/BlogPost.astro";
+const blogPosts = await getCollection("blog");
+---
+
+<html>
+    <MainLayout title="Home">
+        <div class="w-full flex flex-col items-center gap-6 text-sm">
+        
+        <!-- Professional Intro -->
+        
+            <div class="mb-4 w-full flex flex-col items-start gap-4 leading-6">
+                    <img class="w-20 h-20 rounded-full row-reverse" src="avi.jpeg" alt="énio" />
+                    <p class="">
+                    Hello, my name is <span class="text-gray-300"> Énio Carlos </span>
+                    and I am a <span class="text-gray-300">Software Engineer @ Corp.</span>
+                    <br />
+                  
+                    I have accumulated almost <span class="text-gray-300">10 years</span> 
+                    of experience in the field working with companies like: 
+                    <span class="text-gray-300">Google</span>, <span class="text-gray-300">Microsoft</span> 
+                    and <span class="text-gray-300">Amazon</span>.
+                </p>
+                <p>
+                    I love <span class="text-gray-300">teaching</span> and I as much
+                    as I can I contribute to <span class="text-gray-300"
+                        >OpenSource</span
+                    > projects, <span class="text-gray-300">streaming</span> every
+                    friday on twitch!
+                </p>
+            </div>
+            
+            <!-- Social media -->
+            
+            <div class="socials flex flex-col gap-4">
+                <h2 class="w-full text-base text-gray-200">Connect</h2>
+                <di class="w-full flex justify-between items-center mb-4">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <Social icon="x" username="eniocarlos_" />
+                        <Social icon="linkedin" prefix="in/" username="eniocarlos" />
+                        <Social icon="github" username="eniodev" />
+                        <Social icon="instagram" username="enio.carlos__" />
+                        <Social icon="twitch" username="enio.carlos" />
+                        <Social icon="youtube" prefix="@" username="enio.carlos" />
+                        <Social icon="threads" username="enio.carlos__" domain="net"/>
+                    </div>
+                </di>
+            </div>
+            <div class="w-full posts flex flex-col gap-1.5">
+                <h2 class="text-base text-gray-200">Posts</h2>
+                <ul class="flex flex-col items-center text-sm">
+                    {
+                        blogPosts.map((blogPost) => (
+                            <BlogPost
+                                slug={blogPost.slug}
+                                title={blogPost.data.title}
+                                publishedDate={blogPost.data.publishedDate}
+                            />
+                        ))
+                    }
+                </ul>
+            </div>
+        </div>
+    </MainLayout>
+</html>
